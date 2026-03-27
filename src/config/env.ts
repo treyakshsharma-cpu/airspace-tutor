@@ -6,6 +6,7 @@ const logger = new Logger("Config:Env");
 const envSchema = z.object({
   NODE_ENV: z.string(),
   NEXT_PUBLIC_APP_URL: z.string(),
+  NEXT_PUBLIC_TTS_API_KEY: z.string().optional(),
 });
 
 const validateEnv = () => {
