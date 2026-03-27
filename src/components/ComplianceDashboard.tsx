@@ -1,26 +1,12 @@
 "use client";
 
 import React from 'react';
-import { UK_CAA_DATA } from '@/data/uk-drone-regulations';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle2, Circle, Lock, ArrowRight } from 'lucide-react';
 
-interface UserStatus {
-  hasFlyerId: boolean;
-  hasOperatorId: boolean;
-  hasRpcL1: boolean;
-  hasPdra01: boolean;
-  hasInsurance: boolean;
-}
 
-interface Step {
-  id: string;
-  label: string;
-  done: boolean;
-  cost: string;
-}
 
 const ComplianceDashboard: React.FC = () => {
   // Logic: In a real app, these would come from a User's profile/DB
@@ -59,7 +45,7 @@ const ComplianceDashboard: React.FC = () => {
       </CardHeader>
       
       <CardContent className="space-y-4">
-        {steps.map((step, index) => (
+        {steps.map((step) => (
           <div 
             key={step.id} 
             className={`flex items-center justify-between p-4 rounded-xl border transition-all ${

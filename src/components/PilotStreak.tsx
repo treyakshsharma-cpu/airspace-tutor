@@ -13,7 +13,7 @@ interface PilotStreakProps {
 }
 
 const PilotStreak: React.FC<PilotStreakProps> = ({ currentStreak = 5, lastFlightDaysAgo = 12 }) => {
-  const { logged_time, period_days } = UK_CAA_DATA.currency_requirements;
+  const { period_days } = UK_CAA_DATA.currency_requirements;
 
   // Logic: Calculate how close the pilot is to losing 'Active' status
   const daysRemaining = period_days - lastFlightDaysAgo;

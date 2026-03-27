@@ -1,5 +1,4 @@
 import { FlightPlan } from './flight-validator';
-import { UK_CAA_DATA } from '@/data/uk-drone-regulations';
 
 export const generateComplianceReport = (plan: FlightPlan, operatorName: string = "Carbon Magics Ltd"): string => {
   const date = new Date().toLocaleDateString();
