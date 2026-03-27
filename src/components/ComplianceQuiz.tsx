@@ -6,8 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle2, XCircle } from 'lucide-react';
 
-type Feedback = { isCorrect: boolean; message: string };
-
 const ComplianceQuiz: React.FC = () => {
   const [feedback, setFeedback] = useState<{ isCorrect: boolean; message: string } | null>(null);
 
