@@ -8,12 +8,25 @@ const envSchema = z.object({
   NEXT_PUBLIC_APP_URL: z.string(),
 });
 
+// Cross-environment env getter (Node.js or Deno)
+function getEnvVar(key: string): string {
+  if (typeof process !== 'undefined' && process.env && process.env[key]) {
+    return process.env[key] as string;
+  }
+  // @ts-ignore: Deno global
+  if (typeof Deno !== 'undefined' && Deno.env && typeof Deno.env.get === 'function') {
+    // @ts-ignore: Deno global
+    return Deno.env.get(key) || '';
+  }
+  return '';
+}
+
 const validateEnv = () => {
   try {
     logger.info("Validating environment variables");
     const env = {
-      NODE_ENV: process.env.NODE_ENV,
-      NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+      NODE_ENV: getEnvVar('NODE_ENV'),
+      NEXT_PUBLIC_APP_URL: getEnvVar('NEXT_PUBLIC_APP_URL'),
     };
     const parsed = envSchema.parse(env);
     logger.info("Environment variables validated successfully");
